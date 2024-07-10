@@ -36,12 +36,12 @@ const Slider = ({
       <SheetTrigger asChild>
         <Button variant={variant}>{name}</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="grid justify-center mb-20 overflow-y-auto">
         <SheetHeader>
           <SheetTitle>{header}</SheetTitle>
         </SheetHeader>
-        <div className="grid gap-4 py-4">{children}</div>
-        <SheetFooter className="absolute bottom-0 left-0 right-0">
+        <div className="grid gap-4 py-4 overflow-y-auto">{children}</div>
+        <SheetFooter className="absolute bg-white bottom-0 left-0 right-0">
           <SheetClose asChild>{footer}</SheetClose>
         </SheetFooter>
       </SheetContent>

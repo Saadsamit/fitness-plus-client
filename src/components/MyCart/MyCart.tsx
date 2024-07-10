@@ -8,7 +8,7 @@ import { cartData } from "@/redux/features/Cart/cartSlice";
 const MyCart = () => {
   const data = useAppSelector(cartData);
   const footer = (
-    <Button className="w-full" disabled={data?.length ? false : true}>
+    <Button className="w-full z-10" disabled={data?.length ? false : true}>
       <Link to={"checkout"}>Checkout</Link>
     </Button>
   );
@@ -16,7 +16,7 @@ const MyCart = () => {
 
   return (
     <Slider name={<FaShoppingCart />} header={header} footer={footer}>
-      {data?.length ? <div></div> : "Your Cart is empty"}
+      {data?.length ? <div></div> : "your cart is empty"}
     </Slider>
   );
 };
