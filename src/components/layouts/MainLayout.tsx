@@ -1,12 +1,13 @@
-import { Button } from "../ui/button";
+import { Outlet } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const MainLayout = () => {
   return (
     <div>
-      <div className="text-center">
-        <h1 className="text-xl font-bold py-5">Vite + React</h1>
-        <Button className="text-center">click me</Button>
-      </div>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </div>
   );
 };
