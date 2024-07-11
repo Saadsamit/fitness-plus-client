@@ -1,10 +1,11 @@
+import Banner from "@/components/Banner/Banner";
 
 const About = () => {
-    return (
-        <div>
-            this is About
-        </div>
-    );
+  return (
+    <div>
+      <Banner title="about"/>
+    </div>
+  );
 };
 
 export default About;

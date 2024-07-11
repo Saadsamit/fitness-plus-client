@@ -1,8 +1,9 @@
+import Banner from "@/components/Banner/Banner";
 
 const ProductManagement = () => {
     return (
         <div>
-            this is Product Management
+            <Banner title="Product Management"/>
         </div>
     );
 };

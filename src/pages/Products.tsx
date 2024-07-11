@@ -1,8 +1,9 @@
+import Banner from "@/components/Banner/Banner";
 
 const Products = () => {
     return (
         <div>
-            this is Products
+            <Banner title="Products"/>
         </div>
     );
 };

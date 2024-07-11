@@ -1,10 +1,11 @@
+import Banner from "@/components/Banner/Banner";
 
 const ProductDetail = () => {
-    return (
-        <div>
-            this is Product Detail
-        </div>
-    );
+  return (
+    <div>
+      <Banner title="Product Detail" />
+    </div>
+  );
 };
 
 export default ProductDetail;
