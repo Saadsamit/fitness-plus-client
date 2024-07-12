@@ -1,9 +1,22 @@
 import Banner from "@/components/Banner/Banner";
+import Container from "@/components/Container/Container";
+import Loading from "@/components/Loading/Loading";
+import Deatil from "@/components/Product/Deatil";
+import { useGetAProductsQuery } from "@/redux/features/Product/productApi";
+import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
+  const { id } = useParams();
+  const { data, isLoading } = useGetAProductsQuery(id);
+  if (isLoading) {
+    return <Loading className="pt-24" />;
+  }
   return (
     <div>
-      <Banner title="Product Detail" />
+      <Banner title={data?.data?.name} />
+      <Container className="pt-24">
+        <Deatil data={data?.data} />
+      </Container>
     </div>
   );
 };

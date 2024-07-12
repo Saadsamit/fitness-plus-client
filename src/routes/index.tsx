@@ -2,6 +2,7 @@ import App from "@/App";
 import About from "@/pages/About";
 import Cart from "@/pages/Cart";
 import Checkout from "@/pages/Checkout";
+import ErrorPage from "@/pages/ErrorPage";
 import Home from "@/pages/Home";
 import ProductDetail from "@/pages/ProductDetail";
 import ProductManagement from "@/pages/ProductManagement";
@@ -12,6 +13,7 @@ const routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

@@ -15,29 +15,23 @@ const cartSlice = createSlice({
     addCart: (state, action) => {
       const productId = action.payload?.productId;
       const quantity = action.payload?.quantity;
-      const isExist = state.find((item) => item.productId === productId);
-      if (isExist) {
-        state.map((item) => {
-          if (item.productId === productId) {
-            item.productId = productId;
-            item.quantity = item.quantity + quantity;
-          } else {
-            state.push({
-              productId: productId,
-              quantity: quantity,
-            });
-          }
-        });
-      } else {
+      const isExist = state.findIndex((item) => item.productId === productId);
+      if (isExist === -1) {
         const data = {
           productId: productId,
           quantity: quantity,
         };
         state.push(data);
+      } else {
+        state.map((item) => {
+          if (item.productId === productId) {
+            item.quantity = item.quantity + quantity;
+          }
+        });
       }
     },
     removeCart: (state, action) => {
-      state = state.filter((item) => item.productId !== action.payload);
+      return state.filter((item) => item.productId !== action.payload);
     },
   },
 });
