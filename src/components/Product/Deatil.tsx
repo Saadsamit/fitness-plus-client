@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { useAppDispatch } from "@/redux/hooks/ReduxHook";
 import { addCart, removeCart } from "@/redux/features/Cart/cartSlice";
 import { toast } from "sonner";
+import { removeCount, totalCount } from "@/redux/features/Cart/totalPriceSlice";
 
 const Deatil = ({ data }: { data: Record<string, string> }) => {
   const dispatch = useAppDispatch();
@@ -13,20 +14,16 @@ const Deatil = ({ data }: { data: Record<string, string> }) => {
       productId: _id,
       quantity,
     };
+    const total = Number(price) * quantity;
+    dispatch(totalCount(total));
     dispatch(addCart(cartData));
 
     toast("Product is add in your cart", {
       action: {
         label: "Undo",
-        onClick: () => dispatch(removeCart(_id)),
-        actionButtonStyle: {
-          backgroundColor: "#405D72", // Custom background color
-          color: "white", // Custom text color (optional)
-          border: 'none',
-          padding: '10px 20px',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          fontSize: '16px',
+        onClick: () => {
+          dispatch(removeCount(total));
+          dispatch(removeCart(_id));
         },
       },
     });

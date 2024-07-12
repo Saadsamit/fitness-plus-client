@@ -4,6 +4,7 @@ import Loading from "../Loading/Loading";
 import ProductCart from "../Product/ProductCart";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
+import { TProduct } from "@/types/TProducts";
 
 const FeaturedProducts = () => {
   const { data, isLoading } = useGetAllProductsQuery("limit=4");
@@ -16,7 +17,7 @@ const FeaturedProducts = () => {
         Featured Products
       </h2>
       <div className="pt-10 grid md:grid-cols-4 sm:grid-cols-2 gap-4">
-        {data?.data?.map((item) => (
+        {data?.data?.map((item: TProduct) => (
           <ProductCart key={item._id} data={item} />
         ))}
       </div>

@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import Pagination from "@/components/ui/Pagination";
 import { useGetCategorieQuery } from "@/redux/features/Categorie/categorieApi";
 import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
-import { EventHandler, FormEvent, FormEventHandler, useState } from "react";
+import { TProduct } from "@/types/TProducts";
+import { FormEvent, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const Products = () => {
@@ -50,9 +51,9 @@ const Products = () => {
     setPrice("");
     setSearch("");
   };
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const searchData = e.target.search.value;
+    const searchData = (e.target as HTMLFormElement).search.value;
     setSearch(searchData);
   };
 
@@ -119,7 +120,7 @@ const Products = () => {
           Products
         </h2>
         <div className="pt-10 grid md:grid-cols-4 sm:grid-cols-2 gap-4">
-          {data?.data?.map((item) => (
+          {data?.data?.map((item: TProduct) => (
             <ProductCart key={item._id} data={item} />
           ))}
         </div>

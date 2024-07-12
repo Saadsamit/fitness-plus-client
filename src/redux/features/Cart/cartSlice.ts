@@ -1,12 +1,8 @@
 import { RootState } from "@/redux/store";
+import { TCart } from "@/types/TCart";
 import { createSlice } from "@reduxjs/toolkit";
 
-interface TInitialState {
-  productId: string;
-  quantity: number;
-}
-
-const initialState: TInitialState[] = [];
+const initialState: TCart[] = [];
 
 const cartSlice = createSlice({
   name: "cart",

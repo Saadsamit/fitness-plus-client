@@ -36,7 +36,7 @@ const Slider = ({
       <SheetTrigger asChild>
         <Button variant={variant}>{name}</Button>
       </SheetTrigger>
-      <SheetContent className="grid justify-center mb-20 overflow-y-auto">
+      <SheetContent className="grid grid-cols-1 justify-center mb-20 overflow-y-auto">
         <SheetHeader>
           <SheetTitle>{header}</SheetTitle>
         </SheetHeader>

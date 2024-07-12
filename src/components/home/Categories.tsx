@@ -2,6 +2,7 @@ import Categorie from "./Categorie";
 import { useGetCategorieQuery } from "@/redux/features/Categorie/categorieApi";
 import Loading from "../Loading/Loading";
 import Container from "../Container/Container";
+import { TCategorie } from "@/types/TCategorie";
 
 const Categories = () => {
   const { data, isLoading } = useGetCategorieQuery(null);
@@ -14,7 +15,7 @@ const Categories = () => {
         categories
       </h2>
       <div className="pt-10 grid md:grid-cols-2 gap-4">
-        {data?.data?.map((item) => (
+        {data?.data?.map((item: TCategorie) => (
           <Categorie key={item._id} data={item} />
         ))}
       </div>

@@ -1,7 +1,8 @@
+import { TCategorie } from "@/types/TCategorie";
 import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 
-const Categorie = ({ data }: { data: Record<string, string> }) => {
+const Categorie = ({ data }: { data: TCategorie }) => {
   const { name, image } = data;
   const style: CSSProperties = {
     background: `url(${image})`,

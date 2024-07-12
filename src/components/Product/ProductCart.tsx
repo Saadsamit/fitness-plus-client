@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
+import { TProduct } from "@/types/TProducts";
 
-const ProductCart = ({ data }: { data: Record<string, string> }) => {
+const ProductCart = ({ data }: { data: TProduct }) => {
   const { _id, name, image, price } = data;
   return (
     <Link
