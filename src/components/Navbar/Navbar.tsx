@@ -75,12 +75,14 @@ const Navbar = () => {
                 >
                   {links.map((item) => (
                     <li key={item.name}>
-                      <NavLink
-                        to={item.path}
-                        className={`block py-2 px-3 hover:text-[#758694] hover:bg-[#FFF8F3] rounded text-[#405D72] capitalize`}
-                      >
-                        <SheetClose className="w-full">{item.name}</SheetClose>
-                      </NavLink>
+                      <SheetClose asChild>
+                        <NavLink
+                          to={item.path}
+                          className={`block py-2 px-3 hover:text-[#758694] hover:bg-[#FFF8F3] rounded text-[#405D72] capitalize`}
+                        >
+                          {item.name}
+                        </NavLink>
+                      </SheetClose>
                     </li>
                   ))}
                 </ul>

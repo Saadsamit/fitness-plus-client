@@ -3,13 +3,13 @@ import CartComponent from "@/components/cart/CartComponent";
 import Container from "@/components/Container/Container";
 import { Button } from "@/components/ui/button";
 import { cartData } from "@/redux/features/Cart/cartSlice";
-import { priceData } from "@/redux/features/Cart/totalPriceSlice";
 import { useAppSelector } from "@/redux/hooks/ReduxHook";
+import totalPrice from "@/utils/setTotalPrice";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const totalPriceData = useAppSelector(priceData);
   const cartItem = useAppSelector(cartData);
+  const totalPriceData = totalPrice(cartItem);
   return (
     <div>
       <Banner title="cart" />
@@ -20,14 +20,14 @@ const Cart = () => {
           </h2>
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-5">
             {cartItem.map((item) => (
-              <CartComponent data={item} />
+              <CartComponent data={item} key={item.productId} isCart={true} />
             ))}
           </div>
           <div className="flex flex-wrap justify-between pt-7 items-center">
             <div className="flex flex-wrap space-x-4 mb-2 p-2">
               <h3 className="text-xl font-bold">Total:</h3>
               <h5 className="text-xl font-bold text-textColor">
-                ${totalPriceData.total}
+                ${totalPriceData}
               </h5>
             </div>
             <Button>

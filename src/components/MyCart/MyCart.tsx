@@ -5,21 +5,21 @@ import { Button } from "../ui/button";
 import { useAppSelector } from "@/redux/hooks/ReduxHook";
 import { cartData } from "@/redux/features/Cart/cartSlice";
 import CartComponent from "../cart/CartComponent";
-import { priceData } from "@/redux/features/Cart/totalPriceSlice";
+import totalPrice from "@/utils/setTotalPrice";
 
 const MyCart = () => {
   const data = useAppSelector(cartData);
-  const totalPriceData = useAppSelector(priceData);
+  const totalPriceData = totalPrice(data);
   const footer = (
     <div className="w-full">
       <div className="flex flex-wrap justify-between mb-2 p-2">
         <h3 className="text-xl font-bold">Total:</h3>
-        <h5 className="text-xl font-bold text-textColor">
-          ${totalPriceData.total}
-        </h5>
+        <h5 className="text-xl font-bold text-textColor">${totalPriceData}</h5>
       </div>
       <Button className="w-full" disabled={data?.length ? false : true}>
-        <Link to={"/checkout"}>Checkout</Link>
+        <Link to={"/checkout"} className="">
+          Checkout
+        </Link>
       </Button>
     </div>
   );

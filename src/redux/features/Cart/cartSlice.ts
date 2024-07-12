@@ -2,7 +2,11 @@ import { RootState } from "@/redux/store";
 import { TCart } from "@/types/TCart";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: TCart[] = [];
+export interface TCartObj extends TCart {
+  price: number;
+}
+
+const initialState: TCartObj[] = [];
 
 const cartSlice = createSlice({
   name: "cart",
@@ -11,17 +15,20 @@ const cartSlice = createSlice({
     addCart: (state, action) => {
       const productId = action.payload?.productId;
       const quantity = action.payload?.quantity;
+      const price = action.payload?.price;
       const isExist = state.findIndex((item) => item.productId === productId);
       if (isExist === -1) {
         const data = {
-          productId: productId,
-          quantity: quantity,
+          productId,
+          quantity,
+          price,
         };
         state.push(data);
       } else {
         state.map((item) => {
           if (item.productId === productId) {
-            item.quantity = item.quantity + quantity;
+            item.quantity = quantity;
+            item.price = price;
           }
         });
       }
