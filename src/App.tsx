@@ -13,14 +13,15 @@ function App() {
     },
   };
   useEffect(() => {
-    document.title = "Fitness plus";
-  }, []);
-  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+    };
     if (data?.length) {
-      window.onbeforeunload = function () {
-        return "";
-      };
+      window.addEventListener("beforeunload", handleBeforeUnload);
     }
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, [data]);
   return (
     <div className="overflow-hidden">

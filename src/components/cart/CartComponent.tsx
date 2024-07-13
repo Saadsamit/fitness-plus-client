@@ -84,19 +84,15 @@ const CartComponent = ({
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             X {stock - item.quantity}
           </p>
-          {isCart ? (
-            button
-          ) : (
-            <SheetClose asChild>
-              {button}
-            </SheetClose>
-          )}
+          {isCart ? button : <SheetClose asChild>{button}</SheetClose>}
         </div>
-        <Counter
-          quantity={quantity}
-          setQuantity={setQuantity}
-          data={data.data}
-        />
+        <div className="mt-2">
+          <Counter
+            quantity={quantity}
+            setQuantity={setQuantity}
+            data={data.data}
+          />
+        </div>
       </div>
     </div>
   );

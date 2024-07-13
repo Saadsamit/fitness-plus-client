@@ -78,7 +78,9 @@ const Deatil = ({ data }: { data: TProduct }) => {
                 data={data}
               />
             ) : (
-              <Button onClick={handleClick}>Add Cart</Button>
+              <Button onClick={handleClick} disabled={stock === 0}>
+                Add Cart
+              </Button>
             )}
           </div>
           <hr />

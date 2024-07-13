@@ -3,6 +3,7 @@ import { useGetCategorieQuery } from "@/redux/features/Categorie/categorieApi";
 import Loading from "../Loading/Loading";
 import Container from "../Container/Container";
 import { TCategorie } from "@/types/TCategorie";
+import HandleError from "../HandleError/HandleError";
 
 const Categories = () => {
   const { data, isLoading } = useGetCategorieQuery(null);
@@ -14,11 +15,13 @@ const Categories = () => {
       <h2 className="capitalize font-bold text-3xl text-center text-textColor">
         categories
       </h2>
-      <div className="pt-10 grid md:grid-cols-2 gap-4">
-        {data?.data?.map((item: TCategorie) => (
-          <Categorie key={item._id} data={item} />
-        ))}
-      </div>
+      <HandleError arr={data?.data}>
+        <div className="pt-10 grid md:grid-cols-2 gap-4">
+          {data?.data?.map((item: TCategorie) => (
+            <Categorie key={item._id} data={item} />
+          ))}
+        </div>
+      </HandleError>
     </Container>
   );
 };

@@ -6,6 +6,7 @@ import { useAppSelector } from "@/redux/hooks/ReduxHook";
 import { cartData } from "@/redux/features/Cart/cartSlice";
 import CartComponent from "../cart/CartComponent";
 import totalPrice from "@/utils/setTotalPrice";
+import { SheetClose } from "../ui/sheet";
 
 const MyCart = () => {
   const data = useAppSelector(cartData);
@@ -17,9 +18,11 @@ const MyCart = () => {
         <h5 className="text-xl font-bold text-textColor">${totalPriceData}</h5>
       </div>
       <Button className="w-full" disabled={data?.length ? false : true}>
-        <Link to={"/checkout"} className="">
-          Checkout
-        </Link>
+        <SheetClose asChild className="w-full py-2 px-4">
+          <Link to={"/checkout"}>
+            Checkout
+          </Link>
+        </SheetClose>
       </Button>
     </div>
   );

@@ -4,6 +4,7 @@ const ProductManagement = () => {
     return (
         <div>
             <Banner title="Product Management"/>
+            
         </div>
     );
 };

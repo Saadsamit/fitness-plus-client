@@ -34,7 +34,7 @@ const Counter = ({ quantity, setQuantity, data }: TCounter) => {
         price,
       };
       dispatch(addCart(cartData));
-      toast.success("Product is add in your cart");
+      toast.success("Product is Remove from your cart");
     } else {
       dispatch(removeCart(_id));
     }
