@@ -1,6 +1,7 @@
 import Banner from "@/components/Banner/Banner";
 import CartComponent from "@/components/cart/CartComponent";
 import Container from "@/components/Container/Container";
+import MySelect from "@/components/MySelect/MySelect";
 import { Button } from "@/components/ui/button";
 import { cartData, removeAllCart } from "@/redux/features/Cart/cartSlice";
 import { useCreateCheckoutMutation } from "@/redux/features/checkout/checkoutApi";
@@ -27,6 +28,7 @@ const Checkout = () => {
   const { register, handleSubmit, reset } = useForm<TCheckout>();
   const [createCheckout] = useCreateCheckoutMutation();
   const navigate = useNavigate();
+  const selectData = [{ name: "Cash on Delivery" }];
 
   const onSubmit: SubmitHandler<TCheckout> = async (formData) => {
     const id = toast?.loading("Checkout Processing");
@@ -87,20 +89,29 @@ const Checkout = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-textColor block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   />
                 </div>
-                <div className="mb-5">
-                  <label
-                    htmlFor="phone"
-                    className="block mb-1 ml-1 text-sm font-medium text-textColor dark:text-white"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="Enter your Number"
-                    id="phone"
-                    {...register("phone", { required: true })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-textColor block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  />
+                <div className="grid sm:grid-cols-2 items-end gap-5 mb-5">
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block mb-1 ml-1 text-sm font-medium text-textColor dark:text-white"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="Enter your Number"
+                      id="phone"
+                      {...register("phone", { required: true })}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-textColor block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <MySelect
+                      data={selectData}
+                      size={true}
+                      placeholder={"Payment Method"}
+                    />
+                  </div>
                 </div>
 
                 <div className="mb-5">
@@ -141,6 +152,5 @@ const Checkout = () => {
     </div>
   );
 };
-// name, email, phone number, and delivery address.
 
 export default Checkout;

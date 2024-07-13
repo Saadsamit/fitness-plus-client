@@ -8,6 +8,7 @@ import { SheetClose } from "../ui/sheet";
 import Counter from "../counter/Counter";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Button } from "../ui/button";
 
 const CartComponent = ({
   data: item,
@@ -52,12 +53,14 @@ const CartComponent = ({
     </Link>
   );
   const button = (
-    <button
+    <Button
+      size={"sm"}
+      variant={"destructive"}
       onClick={handleClick}
-      className="bg-red-700 opacity-85 text-white p-2 rounded-lg"
+      className="px-2"
     >
       <MdDeleteOutline />
-    </button>
+    </Button>
   );
 
   return (

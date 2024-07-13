@@ -42,12 +42,12 @@ const Products = () => {
   }
   const priceSorting = [
     {
-      value: "-price",
-      title: "High to Low",
-    },
-    {
       value: "price",
       title: "Low to High",
+    },
+    {
+      value: "-price",
+      title: "High to Low",
     },
   ];
   const handleReset = () => {
